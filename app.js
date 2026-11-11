@@ -7,6 +7,18 @@ const STORAGE_SETTINGS_KEY = "astharia_lab_settings"; // key baru: pengaturan la
 
 const INITIAL_ARTWORKS = [
   {
+    id: "poster-survive",
+    title: "SURVIVE — Patrick Edition",
+    category: "Typography",
+    client: "Karya Orisinal Hazukii",
+    tags: ["editorial", "motivasi", "patrick", "survive"],
+    desc: "Poster editorial gaya majalah: karakter cutout, lingkaran merah berani, coretan kuas, dan tipografi raksasa. Karya orisinal Hazukii.",
+    image: "assets/poster-survive-patrick.png",
+    date: "2026-11-10",
+    isDefault: true,
+    bestSeller: true
+  },
+  {
     id: "poster-1",
     title: "Neon Horizon Music Festival",
     category: "Poster Acara",
@@ -54,7 +66,7 @@ const INITIAL_ARTWORKS = [
   {
     id: "poster-5",
     title: "NOMAD Streetwear Capsule Lookbook",
-    category: "Merchandise",
+    category: "Social Media",
     client: "NOMAD Apparel",
     tags: ["apparel", "streetwear", "mockup", "fashion"],
     desc: "Poster promosi koleksi t-shirt streetwear bergaya acid graphics dan elemen distorsi visual berani.",
@@ -107,8 +119,14 @@ function loadData() {
       // ini filter Best Seller kosong dan slider hero hanya berisi 1 desain.
       artworks = artworks.map(a => {
         const init = INITIAL_ARTWORKS.find(i => i.id === a.id);
-        return init && init.bestSeller && !a.bestSeller ? { ...a, bestSeller: true } : a;
+        if (!init) return a;
+        const merged = { ...a, category: init.category };
+        if (init.bestSeller) merged.bestSeller = true;
+        return merged;
       });
+      // Karya bawaan baru (mis. SURVIVE) yang belum ada di data tersimpan ditambahkan di depan
+      const missing = INITIAL_ARTWORKS.filter(i => !artworks.some(a => a.id === i.id));
+      if (missing.length) artworks = [...missing, ...artworks];
     } catch (e) {
       artworks = [...INITIAL_ARTWORKS];
     }
@@ -351,15 +369,9 @@ function initHeroSlider() {
   const track = document.getElementById("sliderTrack");
   if (!slider || !track) return;
 
-  const survive = {
-    title: "SURVIVE — Patrick Edition",
-    category: "Poster Motivasi & Editorial",
-    image: "assets/poster-survive-patrick.png",
-    desc: "Poster editorial gaya majalah: karakter cutout, lingkaran merah berani, dan tipografi raksasa. Karya orisinal Hazukii, November 2026."
-  };
-  const slides = [survive, ...artworks.filter(a => a.bestSeller).map(a => ({
+  const slides = artworks.filter(a => a.bestSeller).map(a => ({
     title: a.title, category: a.category, image: a.image, desc: a.desc || ""
-  }))];
+  }));
   if (slides.length === 0) return;
 
   track.innerHTML = slides.map(s => `

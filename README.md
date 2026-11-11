@@ -94,3 +94,13 @@ Masih harus dilengkapi Hazukii sebelum online:
 
 ## Perbaikan 2026-11-11: sinkronisasi Best Seller untuk data lama
 - Ditemukan saat verifikasi live: browser yang sudah pernah membuka versi lama menyimpan data galeri lama (tanpa tanda bestSeller) di localStorage, sehingga filter Best Seller kosong dan slider hanya berisi SURVIVE. Perbaikan: loadData di app.js kini menggabungkan tanda bestSeller dari data bawaan terbaru ke data tersimpan berdasarkan id karya (karya upload pengguna tetap dipertahankan).
+
+## Update 2026-11-11 (sore 3): teks hero, badge slider, logo baru
+- Teks hero: "...berdaya tarik tinggi untuk audiens Anda." diganti menjadi "...berdaya tarik tinggi, dan kekinian." Tombol hero "Eksplorasi Galeri Poster" diganti "Eksplorasi Hasil Desain".
+- Badge "Featured Design" di slider dihapus; yang tersisa hanya badge "Best Seller".
+- Logo digambar ulang (assets/logo-astharia.svg): huruf A kini path geometris presisi di tengah sparkle (bukan teks font Arial seperti sebelumnya yang terlihat kurang tengah), dan logo kiri atas di semua halaman publik diganti dari ikon palette menjadi logo ini. Profil di halaman Tentang memakai file logo yang sama sehingga ikut berubah.
+
+## Update 2026-11-11 (sore 4): logo A dipertebal & naik, Merchandise hilang, SURVIVE masuk galeri
+- Logo digambar ulang lagi: huruf A lebih tebal bergaya grotesque dengan puncak rata dan digeser ke atas (titik tengah A di y=110 dari 240). Semua halaman memakai file logo yang sama.
+- Kata "Merchandise" dihilangkan sepenuhnya: kategori karya NOMAD Streetwear diganti "Social Media" (data tersimpan pengunjung ikut diselaraskan otomatis lewat loadData).
+- Desain SURVIVE — Patrick Edition dimasukkan sebagai karya galeri poster (kategori Typography, Best Seller, urutan pertama) dan slider hero kini mengambil semua slide dari karya bestSeller galeri (tidak lagi hardcode).
