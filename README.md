@@ -91,3 +91,6 @@ Masih harus dilengkapi Hazukii sebelum online:
 - Box info "Klik gambar untuk lihat detail & pesan" di header galeri dihapus.
 - Kotak Featured Design di hero menjadi slider yang bisa digeser (tombol panah, titik indikator, swipe/drag, auto-putar 6 detik) berisi desain Best Seller: SURVIVE — Patrick Edition + karya bertanda bestSeller.
 - Filter galeri: tombol "Best Seller" ditambahkan (memfilter karya bestSeller: Neon Horizon, NOMAD Streetwear, Carousel Kit — ketiganya juga punya badge Best Seller di kartu), tombol "Merchandise" dihapus.
+
+## Perbaikan 2026-11-11: sinkronisasi Best Seller untuk data lama
+- Ditemukan saat verifikasi live: browser yang sudah pernah membuka versi lama menyimpan data galeri lama (tanpa tanda bestSeller) di localStorage, sehingga filter Best Seller kosong dan slider hanya berisi SURVIVE. Perbaikan: loadData di app.js kini menggabungkan tanda bestSeller dari data bawaan terbaru ke data tersimpan berdasarkan id karya (karya upload pengguna tetap dipertahankan).

@@ -102,6 +102,13 @@ function loadData() {
   if (savedArt) {
     try {
       artworks = JSON.parse(savedArt);
+      // Sinkronkan tanda bestSeller dari data bawaan terbaru: data lama yang sudah
+      // tersimpan di browser pengunjung belum punya tanda ini, jadi tanpa langkah
+      // ini filter Best Seller kosong dan slider hero hanya berisi 1 desain.
+      artworks = artworks.map(a => {
+        const init = INITIAL_ARTWORKS.find(i => i.id === a.id);
+        return init && init.bestSeller && !a.bestSeller ? { ...a, bestSeller: true } : a;
+      });
     } catch (e) {
       artworks = [...INITIAL_ARTWORKS];
     }
