@@ -85,3 +85,9 @@ Masih harus dilengkapi Hazukii sebelum online:
 - Nomor WhatsApp diganti ke nomor asli Astharia Lab: 0857-4821-5098 (format link 6285748215098) di app.js, admin.js, dan admin.html. Catatan: browser yang pernah menyimpan pengaturan lama mungkin perlu memperbarui nomor sekali di Admin > Pengaturan.
 - Pemesanan dipindah ke halaman terpisah: order.html berisi paket jasa, alur kerja, dan formulir pemesanan. Halaman utama (index.html) sekarang hanya berisi beranda/hero, showcase galeri, dan profil/tentang; semua tombol order mengarah ke order.html. app.js dibuat aman untuk kedua halaman (penjaga elemen modal).
 - Perubahan ini juga sudah di-upload ke repository GitHub Hazukii10/astharia-lab (GitHub Pages).
+
+## Update 2026-11-11 (sore 2): halaman Alur Kerja & Tentang + slider Best Seller
+- Alur Kerja pindah ke halaman sendiri: workflow.html (dikeluarkan dari order.html). Tentang/profil pindah ke halaman sendiri: tentang.html (dikeluarkan dari index.html). Halaman utama kini hanya beranda + showcase galeri. Semua menu di semua halaman diperbarui.
+- Box info "Klik gambar untuk lihat detail & pesan" di header galeri dihapus.
+- Kotak Featured Design di hero menjadi slider yang bisa digeser (tombol panah, titik indikator, swipe/drag, auto-putar 6 detik) berisi desain Best Seller: SURVIVE — Patrick Edition + karya bertanda bestSeller.
+- Filter galeri: tombol "Best Seller" ditambahkan (memfilter karya bestSeller: Neon Horizon, NOMAD Streetwear, Carousel Kit — ketiganya juga punya badge Best Seller di kartu), tombol "Merchandise" dihapus.

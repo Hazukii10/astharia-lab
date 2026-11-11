@@ -101,3 +101,9 @@
   background-color: rgba(14, 165, 233, 0.1);
   transform: scale(1.01);
 }
+
+/* Hero featured slider */
+#heroSlider { touch-action: pan-y; cursor: grab; }
+#heroSlider:active { cursor: grabbing; }
+.slider-dot { width: 8px; height: 8px; border-radius: 9999px; background: rgba(255,255,255,.35); transition: all .3s ease; }
+.slider-dot.active { width: 22px; background: #F59E0B; }

@@ -94,10 +94,10 @@
         <a href="order.html" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
           <i class="ph ph-sparkle"></i> Jasa & Harga
         </a>
-        <a href="order.html#workflow" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
+        <a href="workflow.html" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
           <i class="ph ph-git-branch"></i> Alur Kerja
         </a>
-        <a href="#tentang" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
+        <a href="tentang.html" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
           <i class="ph ph-user"></i> Tentang
         </a>
       </nav>
@@ -122,8 +122,8 @@
     <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-dark-900/95 backdrop-blur-xl px-4 py-5 space-y-3">
       <a href="#karya" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Galeri Poster</a>
       <a href="order.html" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Jasa & Harga</a>
-      <a href="order.html#workflow" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Alur Kerja</a>
-      <a href="#tentang" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Tentang</a>
+      <a href="workflow.html" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Alur Kerja</a>
+      <a href="tentang.html" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Tentang</a>
     </div>
   </header>
 
@@ -190,21 +190,32 @@
             
             <!-- Poster Showcase Card -->
             <div class="relative bg-dark-800/90 border border-white/15 rounded-3xl p-4 shadow-2xl backdrop-blur-xl">
-              <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-dark-950 border border-white/10 group">
-                <img src="assets/poster-survive-patrick.png" alt="Poster SURVIVE karya Hazukii, Astharia Lab" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                
+              <div id="heroSlider" class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-dark-950 border border-white/10 select-none">
+                <div id="sliderTrack" class="flex h-full transition-transform duration-700 ease-out"></div>
+
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/10 to-transparent opacity-80 pointer-events-none"></div>
+
                 <!-- Badge on poster -->
-                <div class="absolute top-3 left-3 bg-dark-950/80 backdrop-blur-md border border-sky-500/30 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 text-sky-400">
+                <div class="absolute top-3 left-3 z-10 bg-dark-950/80 backdrop-blur-md border border-sky-500/30 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 text-sky-400">
                   <i class="ph-fill ph-sparkle text-sm text-amber-400"></i> Featured Design
                 </div>
-
-                <div class="absolute bottom-4 left-4 right-4">
-                  <span class="text-xs font-medium uppercase tracking-wider text-sky-400">Poster Motivasi & Editorial</span>
-                  <h3 class="text-xl font-bold font-display text-white mt-1">SURVIVE — Patrick Edition</h3>
-                  <p class="text-xs text-slate-300 mt-1 line-clamp-2">Poster editorial gaya majalah: karakter cutout, lingkaran merah berani, dan tipografi raksasa. Karya orisinal Hazukii, November 2026.</p>
+                <div class="absolute top-3 right-3 z-10 bg-amber-500/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 text-dark-950">
+                  <i class="ph-fill ph-star text-sm"></i> Best Seller
                 </div>
+
+                <button id="sliderPrev" aria-label="Desain sebelumnya" class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-dark-950/70 backdrop-blur-md border border-white/15 text-white flex items-center justify-center hover:bg-dark-800 transition">
+                  <i class="ph-bold ph-caret-left"></i>
+                </button>
+                <button id="sliderNext" aria-label="Desain berikutnya" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-dark-950/70 backdrop-blur-md border border-white/15 text-white flex items-center justify-center hover:bg-dark-800 transition">
+                  <i class="ph-bold ph-caret-right"></i>
+                </button>
+
+                <div class="absolute bottom-10 left-4 right-4 z-10 pointer-events-none">
+                  <span id="sliderCategory" class="text-xs font-medium uppercase tracking-wider text-sky-400">Poster Motivasi & Editorial</span>
+                  <h3 id="sliderTitle" class="text-xl font-bold font-display text-white mt-1">SURVIVE — Patrick Edition</h3>
+                  <p id="sliderDesc" class="text-xs text-slate-300 mt-1 line-clamp-2"></p>
+                </div>
+                <div id="sliderDots" class="absolute bottom-3.5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5"></div>
               </div>
 
               <!-- Mini info -->
@@ -245,11 +256,6 @@
           </p>
         </div>
 
-        <!-- Quick Filter Info -->
-        <div class="text-xs text-slate-400 flex items-center gap-1.5 bg-white/5 px-4 py-2 rounded-xl border border-white/5">
-          <i class="ph-bold ph-hand-tap text-sky-400 text-base"></i>
-          <span>Klik gambar untuk lihat detail & pesan</span>
-        </div>
       </div>
 
       <!-- Category Filter Tabs & Search -->
@@ -258,6 +264,9 @@
         <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="categoryFilterContainer">
           <button data-cat="all" class="category-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
             Semua Karya
+          </button>
+          <button data-cat="Best Seller" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all">
+            <i class="ph-fill ph-star text-amber-400"></i> Best Seller
           </button>
           <button data-cat="Poster Acara" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all">
             Poster Acara
@@ -270,9 +279,6 @@
           </button>
           <button data-cat="Social Media" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all">
             Social Media
-          </button>
-          <button data-cat="Merchandise" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all">
-            Merchandise
           </button>
         </div>
 
@@ -298,47 +304,6 @@
     </div>
   </section>
 
-  <!-- Tentang Desainer Section -->
-  <section id="tentang" class="scroll-mt-24 py-20 border-t border-white/5 bg-dark-950">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
-        
-        <div class="md:col-span-5 flex justify-center">
-          <div class="relative w-64 h-64 sm:w-72 sm:h-72">
-            <div class="absolute inset-0 bg-gradient-to-tr from-sky-500 to-amber-500 rounded-3xl rotate-6 blur-lg opacity-30"></div>
-            <div class="relative w-full h-full rounded-3xl overflow-hidden border-2 border-white/10 bg-dark-800">
-              <img id="aboutAvatar" src="assets/logo-astharia.svg" alt="Logo Astharia Lab" class="w-full h-full object-contain p-10">
-            </div>
-          </div>
-        </div>
-
-        <div class="md:col-span-7 space-y-4 text-center md:text-left">
-          <span class="text-xs font-bold tracking-widest uppercase text-sky-400 bg-sky-500/10 px-3 py-1 rounded-md border border-sky-500/20">
-            Creative Mind Behind The Works
-          </span>
-          <h3 id="aboutName" class="font-display font-black text-3xl text-white">Hazukii</h3>
-          <p id="aboutRole" class="text-brand-cyan font-medium text-sm">Visual & Poster Graphic Designer</p>
-          <p id="aboutBio" class="text-slate-400 text-sm leading-relaxed">
-            Hazukii adalah desainer grafis asal Kediri yang fokus membuat poster dan desain visual untuk media sosial. Karyanya menonjolkan tipografi yang berani dan tampilan yang estetik — saat ini membuka jasa desain poster acara, konten Instagram, dan promosi.
-          </p>
-
-          <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
-            <div class="px-3.5 py-1.5 rounded-lg bg-dark-800 border border-white/10 text-xs text-slate-300 flex items-center gap-1.5">
-              <i class="ph-bold ph-paint-brush text-sky-400"></i> Adobe Photoshop
-            </div>
-            <div class="px-3.5 py-1.5 rounded-lg bg-dark-800 border border-white/10 text-xs text-slate-300 flex items-center gap-1.5">
-              <i class="ph-bold ph-bezier-curve text-amber-400"></i> Adobe Illustrator
-            </div>
-            <div class="px-3.5 py-1.5 rounded-lg bg-dark-800 border border-white/10 text-xs text-slate-300 flex items-center gap-1.5">
-              <i class="ph-bold ph-figma-logo text-emerald-400"></i> Figma
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- Footer with Discreet Admin Link -->
   <footer class="border-t border-white/10 bg-dark-950 py-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
@@ -349,6 +314,8 @@
       <div class="flex items-center gap-6 text-slate-400">
         <a href="#karya" class="hover:text-white transition">Galeri Poster</a>
         <a href="order.html" class="hover:text-white transition">Jasa & Paket</a>
+        <a href="workflow.html" class="hover:text-white transition">Alur Kerja</a>
+        <a href="tentang.html" class="hover:text-white transition">Tentang</a>
         <a href="order.html" class="hover:text-white transition">Pesan</a>
       </div>
     </div>

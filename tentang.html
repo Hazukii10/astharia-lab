@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Hazukii | Astharia Lab</title>
+  <meta name="description" content="Portfolio desain grafis, poster event, branding, dan layanan jasa pembuatan poster profesional dengan estetika modern kekinian.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            dark: {
+              950: '#06080E',
+              900: '#0A0D16',
+              800: '#111726',
+              700: '#1A2338',
+              600: '#263350',
+            },
+            brand: {
+              cyan: '#0EA5E9',
+              blue: '#2563EB',
+              amber: '#F59E0B',
+              orange: '#F97316',
+              emerald: '#10B981',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark-950 text-slate-100 font-sans antialiased selection:bg-brand-cyan selection:text-dark-950 relative min-h-screen overflow-x-hidden">
+
+  <!-- Background Ambient Glows (Electric Cyan & Amber/Blue - No Purple) -->
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-[450px] h-[450px] bg-sky-500/8 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-blue-600/8 rounded-full blur-[160px]"></div>
+    <div class="absolute bottom-20 left-1/4 w-[450px] h-[450px] bg-amber-500/5 rounded-full blur-[160px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-10"></div>
+  </div>
+
+  <!-- Announcement / Commission Bar -->
+  <div class="bg-gradient-to-r from-sky-950/80 via-blue-950/80 to-dark-900 border-b border-sky-500/20 px-4 py-2 text-xs sm:text-sm text-center font-medium backdrop-blur-md flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-semibold border border-emerald-500/30 text-xs">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open Commission
+    </span>
+    <span class="text-slate-300">Jasa Desain Poster Acara, Brand Identity & Social Media Visual!</span>
+  </div>
+
+  <!-- Header / Navigation Bar (Customer View) -->
+  <header class="sticky top-0 z-40 bg-dark-950/85 backdrop-blur-xl border-b border-white/5 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-500 via-blue-600 to-amber-500 p-[1.5px] shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-dark-950 rounded-[14px] flex items-center justify-center">
+            <i class="ph-bold ph-palette text-2xl text-transparent bg-clip-text bg-gradient-to-tr from-sky-400 to-amber-400"></i>
+          </div>
+        </div>
+        <div>
+          <span id="navBrandName" class="font-display font-black text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-sky-300">
+            Astharia<span class="text-brand-cyan"> Lab</span>
+          </span>
+          <span class="block text-[11px] tracking-wide text-slate-400 font-medium">desain estetik, dengan gaya kekinian</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="index.html#karya" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
+          <i class="ph ph-images"></i> Galeri Poster
+        </a>
+        <a href="order.html" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
+          <i class="ph ph-sparkle"></i> Jasa & Harga
+        </a>
+        <a href="workflow.html" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
+          <i class="ph ph-git-branch"></i> Alur Kerja
+        </a>
+        <a href="#tentang" class="text-sky-400 transition-colors flex items-center gap-1.5">
+          <i class="ph ph-user"></i> Tentang
+        </a>
+      </nav>
+
+      <!-- Customer Action Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Direct Order via WhatsApp Button -->
+        <a id="btnNavWhatsApp" href="order.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-sky-600 text-white font-bold text-xs sm:text-sm shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:brightness-110 active:scale-95 transition-all">
+          <i class="ph-bold ph-whatsapp-logo text-base"></i>
+          <span>Konsultasi / Order</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="btnMobileMenu" aria-label="Buka atau tutup menu" aria-expanded="false" class="md:hidden p-2.5 rounded-xl bg-dark-800 border border-white/10 text-slate-300 hover:text-white">
+          <i class="ph-bold ph-list text-xl"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-dark-900/95 backdrop-blur-xl px-4 py-5 space-y-3">
+      <a href="index.html#karya" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Galeri Poster</a>
+      <a href="order.html" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Jasa & Harga</a>
+      <a href="workflow.html" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Alur Kerja</a>
+      <a href="tentang.html" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Tentang</a>
+    </div>
+  </header>
+
+  <!-- Page Intro: Tentang -->
+  <section class="relative pt-12 pb-2 md:pt-16 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-bold tracking-widest uppercase text-sky-400 bg-sky-500/10 px-3 py-1 rounded-md border border-sky-500/20">
+        Profil Desainer
+      </span>
+      <h1 class="font-display font-black text-3xl sm:text-5xl text-white mt-4">
+        Tentang <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-amber-300">Astharia Lab</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Tentang Desainer Section -->
+  <section id="tentang" class="scroll-mt-24 py-20 border-t border-white/5 bg-dark-950">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+        
+        <div class="md:col-span-5 flex justify-center">
+          <div class="relative w-64 h-64 sm:w-72 sm:h-72">
+            <div class="absolute inset-0 bg-gradient-to-tr from-sky-500 to-amber-500 rounded-3xl rotate-6 blur-lg opacity-30"></div>
+            <div class="relative w-full h-full rounded-3xl overflow-hidden border-2 border-white/10 bg-dark-800">
+              <img id="aboutAvatar" src="assets/logo-astharia.svg" alt="Logo Astharia Lab" class="w-full h-full object-contain p-10">
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-7 space-y-4 text-center md:text-left">
+          <span class="text-xs font-bold tracking-widest uppercase text-sky-400 bg-sky-500/10 px-3 py-1 rounded-md border border-sky-500/20">
+            Creative Mind Behind The Works
+          </span>
+          <h3 id="aboutName" class="font-display font-black text-3xl text-white">Hazukii</h3>
+          <p id="aboutRole" class="text-brand-cyan font-medium text-sm">Visual & Poster Graphic Designer</p>
+          <p id="aboutBio" class="text-slate-400 text-sm leading-relaxed">
+            Hazukii adalah desainer grafis asal Kediri yang fokus membuat poster dan desain visual untuk media sosial. Karyanya menonjolkan tipografi yang berani dan tampilan yang estetik — saat ini membuka jasa desain poster acara, konten Instagram, dan promosi.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
+            <div class="px-3.5 py-1.5 rounded-lg bg-dark-800 border border-white/10 text-xs text-slate-300 flex items-center gap-1.5">
+              <i class="ph-bold ph-paint-brush text-sky-400"></i> Adobe Photoshop
+            </div>
+            <div class="px-3.5 py-1.5 rounded-lg bg-dark-800 border border-white/10 text-xs text-slate-300 flex items-center gap-1.5">
+              <i class="ph-bold ph-bezier-curve text-amber-400"></i> Adobe Illustrator
+            </div>
+            <div class="px-3.5 py-1.5 rounded-lg bg-dark-800 border border-white/10 text-xs text-slate-300 flex items-center gap-1.5">
+              <i class="ph-bold ph-figma-logo text-emerald-400"></i> Figma
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with Discreet Admin Link -->
+  <footer class="border-t border-white/10 bg-dark-950 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+        <span id="footerBrand">Astharia Lab • Hak Cipta Dilindungi</span>
+      </div>
+      <div class="flex items-center gap-6 text-slate-400">
+        <a href="index.html#karya" class="hover:text-white transition">Galeri Poster</a>
+        <a href="order.html" class="hover:text-white transition">Jasa & Paket</a>
+        <a href="workflow.html" class="hover:text-white transition">Alur Kerja</a>
+        <a href="tentang.html" class="hover:text-white transition">Tentang</a>
+        <a href="order.html" class="hover:text-white transition">Pesan</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tombol order melayang (khusus HP) -->
+  <a href="order.html" aria-label="Order desain sekarang" class="fixed bottom-4 right-4 z-40 md:hidden inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-sm shadow-2xl shadow-emerald-500/30 active:scale-95 transition">
+    <i class="ph-bold ph-whatsapp-logo text-lg"></i> Order Desain
+  </a>
+
+  <script src="app.js"></script>
+</body>
+</html>

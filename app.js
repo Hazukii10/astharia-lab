@@ -15,7 +15,8 @@ const INITIAL_ARTWORKS = [
     desc: "Eksplorasi tipografi berani dan efek chromatic aberration untuk festival musik alternatif kontemporer di Jakarta.",
     image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80",
     date: "2026-03-15",
-    isDefault: true
+    isDefault: true,
+    bestSeller: true
   },
   {
     id: "poster-2",
@@ -59,7 +60,8 @@ const INITIAL_ARTWORKS = [
     desc: "Poster promosi koleksi t-shirt streetwear bergaya acid graphics dan elemen distorsi visual berani.",
     image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80",
     date: "2026-03-28",
-    isDefault: true
+    isDefault: true,
+    bestSeller: true
   },
   {
     id: "poster-6",
@@ -70,7 +72,8 @@ const INITIAL_ARTWORKS = [
     desc: "Serangkaian template slide Instagram yang saling menyambung dengan layout clean dan call-to-action memikat.",
     image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80",
     date: "2026-04-14",
-    isDefault: true
+    isDefault: true,
+    bestSeller: true
   }
 ];
 
@@ -91,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupEventListeners();
   renderGallery();
   updateUIFromSettings();
+  initHeroSlider();
 });
 
 function loadData() {
@@ -164,7 +168,7 @@ function renderGallery() {
   if (!container) return;
 
   const filtered = artworks.filter(item => {
-    const matchesCategory = currentFilter === "all" || item.category.toLowerCase() === currentFilter.toLowerCase();
+    const matchesCategory = currentFilter === "all" || (currentFilter === "Best Seller" ? item.bestSeller === true : item.category.toLowerCase() === currentFilter.toLowerCase());
     const matchesSearch = !currentSearch || 
       item.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
       (item.tags && item.tags.some(t => t.toLowerCase().includes(currentSearch.toLowerCase()))) ||
@@ -187,6 +191,7 @@ function renderGallery() {
         <div class="absolute top-3 left-3 bg-dark-950/80 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full text-[11px] font-semibold text-sky-300">
           ${escapeHTML(item.category)}
         </div>
+        ${item.bestSeller ? `<div class="absolute top-3 right-3 bg-amber-500/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-dark-950 flex items-center gap-1"><i class="ph-fill ph-star"></i> Best Seller</div>` : ""}
 
         <div class="absolute inset-0 bg-dark-950/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
           <span class="px-4 py-2 rounded-xl bg-sky-500 text-white font-bold text-xs shadow-lg flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
@@ -330,6 +335,73 @@ function setupEventListeners() {
       window.open(url, "_blank");
     });
   }
+}
+
+
+// Hero Featured Slider (Best Seller) — bisa digeser / swipe
+function initHeroSlider() {
+  const slider = document.getElementById("heroSlider");
+  const track = document.getElementById("sliderTrack");
+  if (!slider || !track) return;
+
+  const survive = {
+    title: "SURVIVE — Patrick Edition",
+    category: "Poster Motivasi & Editorial",
+    image: "assets/poster-survive-patrick.png",
+    desc: "Poster editorial gaya majalah: karakter cutout, lingkaran merah berani, dan tipografi raksasa. Karya orisinal Hazukii, November 2026."
+  };
+  const slides = [survive, ...artworks.filter(a => a.bestSeller).map(a => ({
+    title: a.title, category: a.category, image: a.image, desc: a.desc || ""
+  }))];
+  if (slides.length === 0) return;
+
+  track.innerHTML = slides.map(s => `
+    <div class="w-full h-full shrink-0">
+      <img src="${escapeHTML(s.image)}" alt="${escapeHTML(s.title)}" draggable="false" class="w-full h-full object-cover">
+    </div>`).join("");
+
+  const dotsWrap = document.getElementById("sliderDots");
+  dotsWrap.innerHTML = slides.map((_, i) => `<button type="button" aria-label="Ke desain ${i + 1}" data-slide="${i}" class="slider-dot${i === 0 ? " active" : ""}"></button>`).join("");
+
+  const elCategory = document.getElementById("sliderCategory");
+  const elTitle = document.getElementById("sliderTitle");
+  const elDesc = document.getElementById("sliderDesc");
+  let current = 0;
+  let timer = null;
+
+  function go(i) {
+    current = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    elCategory.textContent = slides[current].category;
+    elTitle.textContent = slides[current].title;
+    elDesc.textContent = slides[current].desc;
+    dotsWrap.querySelectorAll(".slider-dot").forEach((d, di) => d.classList.toggle("active", di === current));
+  }
+  function restartAuto() {
+    clearInterval(timer);
+    timer = setInterval(() => go(current + 1), 6000);
+  }
+
+  document.getElementById("sliderPrev").addEventListener("click", () => { go(current - 1); restartAuto(); });
+  document.getElementById("sliderNext").addEventListener("click", () => { go(current + 1); restartAuto(); });
+  dotsWrap.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-slide]");
+    if (btn) { go(parseInt(btn.dataset.slide, 10)); restartAuto(); }
+  });
+
+  // Swipe / drag untuk menggeser
+  let startX = null;
+  slider.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  slider.addEventListener("pointerup", (e) => {
+    if (startX === null) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 40) { go(current + (dx < 0 ? 1 : -1)); restartAuto(); }
+    startX = null;
+  });
+  slider.addEventListener("pointerleave", () => { startX = null; });
+
+  go(0);
+  restartAuto();
 }
 
 function escapeHTML(str) {
