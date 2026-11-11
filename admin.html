@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Pemilik | Astharia Lab</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            dark: {
+              950: '#06080E',
+              900: '#0A0D16',
+              800: '#111726',
+              700: '#1A2338',
+              600: '#263350',
+            },
+            brand: {
+              cyan: '#0EA5E9',
+              blue: '#2563EB',
+              amber: '#F59E0B',
+              orange: '#F97316',
+              emerald: '#10B981',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark-950 text-slate-100 font-sans antialiased min-h-screen relative flex flex-col">
+
+  <!-- Ambient Glows -->
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-[450px] h-[450px] bg-sky-500/10 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/2 -right-40 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[150px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
+  </div>
+
+  <!-- Navigation Bar Pemilik -->
+  <header class="bg-dark-900 border-b border-white/10 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-amber-500 p-[1.5px] shadow-lg shadow-sky-500/20">
+          <div class="w-full h-full bg-dark-950 rounded-[10px] flex items-center justify-center">
+            <i class="ph-bold ph-shield-check text-xl text-sky-400"></i>
+          </div>
+        </div>
+        <div>
+          <span class="font-display font-black text-lg text-white tracking-tight flex items-center gap-2">
+            Area Pemilik Website
+            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Owner Portal</span>
+          </span>
+          <span id="headerBrandSubtitle" class="text-xs text-slate-400">Kelola Portofolio & Jasa Desain</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Button View Customer Page -->
+        <a href="index.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs sm:text-sm font-semibold transition">
+          <i class="ph-bold ph-arrow-square-out text-base text-sky-400"></i>
+          <span class="hidden sm:inline">Lihat Tampilan Customer</span>
+        </a>
+
+        <!-- Logout button -->
+        <button id="btnLogout" class="p-2 rounded-xl bg-dark-800 hover:bg-rose-950/40 border border-white/10 hover:border-rose-500/40 text-slate-400 hover:text-rose-400 transition" title="Kunci / Keluar">
+          <i class="ph-bold ph-sign-out text-lg"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- Top Summary / Stats Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <div class="bg-dark-900 border border-white/10 rounded-2xl p-5 flex items-center justify-between">
+        <div>
+          <span class="text-xs text-slate-400 font-medium">Total Karya Terbit</span>
+          <h3 id="statTotal" class="font-display font-black text-3xl text-white mt-1">6</h3>
+          <span class="text-[11px] text-sky-400 mt-1 block">Tampil di galeri customer</span>
+        </div>
+        <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-2xl">
+          <i class="ph-bold ph-images"></i>
+        </div>
+      </div>
+
+      <div class="bg-dark-900 border border-white/10 rounded-2xl p-5 flex items-center justify-between">
+        <div>
+          <span class="text-xs text-slate-400 font-medium">Nomor WhatsApp Order</span>
+          <h3 id="statPhone" class="font-display font-bold text-lg text-white mt-1">6281234567890</h3>
+          <span class="text-[11px] text-emerald-400 mt-1 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Siap Menerima Order
+          </span>
+        </div>
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+          <i class="ph-bold ph-whatsapp-logo"></i>
+        </div>
+      </div>
+
+      <div class="bg-dark-900 border border-white/10 rounded-2xl p-5 flex items-center justify-between">
+        <div>
+          <span class="text-xs text-slate-400 font-medium">Status Studio</span>
+          <h3 id="statStudioName" class="font-display font-bold text-lg text-white mt-1">Astharia Lab</h3>
+          <span class="text-[11px] text-amber-400 mt-1 block">Profil desainer aktif</span>
+        </div>
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-2xl">
+          <i class="ph-bold ph-paint-brush"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="border-b border-white/10 flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
+      <button id="tabBtnUpload" class="admin-tab active px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 transition-all">
+        <i class="ph-bold ph-cloud-arrow-up text-base"></i>
+        Upload Karya Poster Baru
+      </button>
+      <button id="tabBtnManage" class="admin-tab px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all">
+        <i class="ph-bold ph-stack text-base"></i>
+        Kelola Semua Karya (<span id="tabCountWorks">6</span>)
+      </button>
+      <button id="tabBtnSettings" class="admin-tab px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all">
+        <i class="ph-bold ph-gear text-base"></i>
+        Pengaturan Profil & WhatsApp
+      </button>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 1: UPLOAD KARYA BARU                       -->
+    <!-- ============================================== -->
+    <section id="tabContentUpload" class="space-y-6">
+      <div class="bg-dark-900 border border-white/10 rounded-3xl p-6 sm:p-8">
+        
+        <div class="max-w-2xl mb-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-sky-400 bg-sky-500/10 px-3 py-1 rounded-md border border-sky-500/20">
+            Formulir Upload Karya
+          </span>
+          <h2 class="font-display font-black text-2xl sm:text-3xl text-white mt-3">
+            Unggah Poster atau Desain Baru
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">
+            Karya yang diunggah di sini akan langsung muncul di halaman utama portofolio yang dapat dilihat oleh customer.
+          </p>
+        </div>
+
+        <form id="ownerUploadForm" class="space-y-6 max-w-4xl">
+          
+          <!-- Dropzone File Upload -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">File Gambar Poster / Desain *</label>
+            <div id="dropzone" class="border-2 border-dashed border-white/15 hover:border-sky-500/60 rounded-2xl p-8 text-center cursor-pointer transition bg-dark-950/60 group relative">
+              <input type="file" id="fileInput" accept="image/*" class="hidden">
+              
+              <div id="dropzoneContent" class="space-y-3">
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                  <i class="ph-bold ph-upload-simple"></i>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-white">Klik untuk pilih gambar atau seret file ke sini</p>
+                  <p class="text-xs text-slate-400 mt-1">Mendukung format JPG, PNG, WEBP resolusi tinggi</p>
+                </div>
+              </div>
+
+              <!-- Preview Frame -->
+              <div id="previewContainer" class="hidden relative rounded-xl overflow-hidden max-h-72 mx-auto">
+                <img id="imagePreview" src="" alt="Preview Poster" class="w-full h-full object-contain mx-auto max-h-72">
+                <button type="button" id="btnRemoveImage" class="absolute top-2 right-2 p-2 rounded-full bg-dark-950/80 text-rose-400 hover:text-white hover:bg-rose-600 text-sm backdrop-blur transition">
+                  <i class="ph-bold ph-trash"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- URL Input Option -->
+            <div class="mt-2 flex items-center justify-between text-xs">
+              <span class="text-slate-500">Gambar disimpan langsung di memori browser Anda.</span>
+              <button type="button" id="toggleUrlInput" class="text-sky-400 hover:text-sky-300 underline">
+                Atau gunakan Link / URL Gambar
+              </button>
+            </div>
+            <input type="url" id="imageUrlInput" placeholder="https://domain.com/link-gambar-poster.jpg" class="hidden mt-2 w-full px-4 py-2.5 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500">
+          </div>
+
+          <!-- Metadata Fields -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Judul Poster / Desain *</label>
+              <input type="text" id="artworkTitle" required placeholder="Contoh: Sonic Fest Live Concert" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500 transition">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Kategori Desain *</label>
+              <select id="artworkCategory" required class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500 transition">
+                <option value="Poster Acara">Poster Acara</option>
+                <option value="Typography">Typography</option>
+                <option value="Branding & Logo">Branding & Logo</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Merchandise">Merchandise</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Klien / Acara / Tahun</label>
+              <input type="text" id="artworkClient" placeholder="Contoh: Java Jazz Festival / 2026" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500 transition">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Tagar Pencarian (Pisahkan dengan koma)</label>
+              <input type="text" id="artworkTags" placeholder="Contoh: musik, retro, neon, jazz" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500 transition">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Deskripsi Konsep / Cerita Desain</label>
+            <textarea id="artworkDesc" rows="3" placeholder="Ceritakan inspirasi konsep visual, pilihan warna, atau gaya tipografi pada poster ini..." class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500 transition"></textarea>
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-end gap-3">
+            <button type="submit" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-sky-600 hover:brightness-110 text-white font-bold text-sm shadow-xl shadow-sky-500/25 transition flex items-center gap-2">
+              <i class="ph-bold ph-check text-lg"></i>
+              Simpan & Terbitkan ke Galeri
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: KELOLA KARYA YANG SUDAH ADA            -->
+    <!-- ============================================== -->
+    <section id="tabContentManage" class="hidden space-y-6">
+      <div class="bg-dark-900 border border-white/10 rounded-3xl p-6 sm:p-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-white/10">
+          <div>
+            <h3 class="font-display font-black text-2xl text-white">Daftar Semua Poster Portofolio</h3>
+            <p class="text-xs text-slate-400 mt-1">Anda dapat menghapus karya yang sudah usang atau melihat detailnya.</p>
+          </div>
+          <button onclick="switchTab('upload')" class="px-4 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-semibold text-xs transition flex items-center gap-1.5 self-start">
+            <i class="ph-bold ph-plus"></i> Tambah Poster Baru
+          </button>
+        </div>
+
+        <div id="adminWorksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <!-- Rendered dynamically via admin.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 3: PENGATURAN PROFIL & WHATSAPP           -->
+    <!-- ============================================== -->
+    <section id="tabContentSettings" class="hidden space-y-6">
+      <div class="bg-dark-900 border border-white/10 rounded-3xl p-6 sm:p-8 max-w-3xl">
+        
+        <div class="mb-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-500/10 px-3 py-1 rounded-md border border-amber-500/20">
+            Identitas & Kontak
+          </span>
+          <h3 class="font-display font-black text-2xl text-white mt-3">Pengaturan Profil & WhatsApp Order</h3>
+          <p class="text-xs text-slate-400 mt-1">Data ini akan tampil di halaman customer dan digunakan saat customer memesan via WhatsApp.</p>
+        </div>
+
+        <form id="adminSettingsForm" class="space-y-5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Nama Studio / Brand Portofolio</label>
+            <input type="text" id="settingsBrandName" placeholder="Contoh: Astharia Lab" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500 transition">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Nama Lengkap Desainer</label>
+            <input type="text" id="settingsDesignerName" placeholder="Contoh: Hazukii" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500 transition">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Nomor WhatsApp untuk Terima Pesanan (Gunakan awalan 62)</label>
+            <input type="text" id="settingsPhone" placeholder="Contoh: 6281234567890" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500 transition">
+            <span class="text-[11px] text-slate-400 mt-1 block">Format: 628xxxx (Jangan gunakan 08xxx agar tautan chat langsung terhubung).</span>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Bio Singkat / Tentang Anda</label>
+            <textarea id="settingsBio" rows="4" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-sky-500 transition"></textarea>
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+            <button type="button" id="btnResetData" class="text-rose-400 hover:text-rose-300 text-xs font-medium flex items-center gap-1.5 transition">
+              <i class="ph ph-arrow-counter-clockwise"></i> Reset ke Sampel Awal
+            </button>
+            <button type="submit" class="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm shadow-md transition">
+              Simpan Perubahan
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Login / PIN Verification Modal -->
+  <div id="loginModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl hidden items-center justify-center p-4">
+    <div class="relative bg-dark-900 border border-white/15 rounded-3xl w-full max-w-md p-8 shadow-2xl animate-scaleIn text-center">
+      
+      <div class="w-16 h-16 mx-auto rounded-3xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-3xl mb-4">
+        <i class="ph-bold ph-lock-key"></i>
+      </div>
+
+      <h3 class="font-display font-black text-2xl text-white">Login Pemilik Website</h3>
+      <p class="text-xs text-slate-400 mt-1">Masukkan PIN akses untuk membuka dashboard pengelola portofolio.</p>
+
+      <form id="loginForm" class="mt-6 space-y-4">
+        <div>
+          <input type="password" id="pinInput" placeholder="Masukkan PIN akses" autofocus class="w-full text-center tracking-[0.3em] font-mono text-lg px-4 py-3 rounded-xl bg-dark-950 border border-white/15 text-white focus:outline-none focus:border-amber-400 transition">
+          <p class="text-[11px] text-slate-500 mt-2">PIN hanya diketahui pemilik website.</p>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:brightness-110 text-dark-950 font-black text-sm shadow-lg transition">
+          Buka Dashboard
+        </button>
+
+        <a href="index.html" class="block text-xs text-slate-400 hover:text-white pt-2">
+          ← Kembali ke Halaman Utama Customer
+        </a>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 px-4 py-3 rounded-2xl bg-dark-900 border border-white/20 text-white shadow-2xl">
+    <div id="toastIcon" class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+      <i class="ph-bold ph-check"></i>
+    </div>
+    <div class="text-xs sm:text-sm font-medium" id="toastMessage">Pemberitahuan</div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

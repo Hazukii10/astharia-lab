@@ -1,0 +1,82 @@
+# ASTHARIA LAB - Portfolio Desain Grafis & Jasa Pembuatan Poster
+
+Website portofolio dan pemesanan jasa desain grafis & poster dengan estetika modern ("kekinian"), dark luxury, neon accent, serta fitur interaktif unggah karya langsung dari browser!
+
+---
+
+## 🎨 Fitur Utama
+
+1. **Galeri Portofolio Dinamis & Filter Kategori**:
+   - Filter instan berdasarkan: *Poster Acara*, *Typography*, *Branding & Logo*, *Social Media*, *Merchandise*.
+   - Fitur pencarian judul poster & tag.
+   - Dilengkapi 6 contoh desain poster berestetika tinggi bawaan.
+
+2. **Fitur Upload Karya Baru Langsung dari Browser**:
+   - Tombol **"Upload Karya"** dengan fitur *drag & drop* atau pilih file gambar dari laptop/HP (JPG, PNG, WEBP).
+   - Dukungan input URL gambar dari internet.
+   - Mengisi Judul, Kategori, Klien/Tahun, Tagar, dan Deskripsi Karya.
+   - Karya tersimpan secara otomatis di browser (*LocalStorage*) dan langsung muncul di galeri.
+
+3. **Detail Poster & Lightbox View**:
+   - Klik poster mana saja untuk melihat resolusi penuh, detail konsep, dan tag.
+   - Tombol instan **"Pesan Desain Gaya Serupa"** yang otomatis mengarahkan ke WhatsApp dengan pesan khusus.
+   - Opsi hapus karya jika ingin memperbarui portofolio.
+
+4. **Katalog Jasa & Paket Harga Desain**:
+   - **Paket Poster Acara / Event** (Mulai Rp 75.000)
+   - **Full Visual Campaign** (Mulai Rp 175.000 - Highlight Populer)
+   - **Branding & Logo Kit** (Mulai Rp 350.000)
+   - Tombol pemesanan langsung terhubung ke WhatsApp dengan format pesan otomatis.
+
+5. **Formulir Pemesanan Kustom**:
+   - Client bisa menginput nama, pilihan paket, deadline, ukuran (A3, IG Story, dll.), dan ringkasan brief.
+   - Klik kirim langsung membuka chat WhatsApp dengan template rapi.
+
+6. **Pengaturan Identitas & Nomor WhatsApp (Tanpa Perlu Koding)**:
+   - Klik ikon gerigi (⚙️) di navigasi atas.
+   - Ubah Nama Studio/Brand, Nama Desainer, Nomor WhatsApp, dan Bio profil.
+   - Perubahan langsung aktif di seluruh tombol pemesanan WhatsApp!
+
+---
+
+## 🚀 Cara Menjalankan Website
+
+### Opsi 1: Buka Langsung (Paling Mudah)
+Cukup buka file `index.html` dengan klik dua kali di file explorer atau klik kanan lalu pilih **Open with Google Chrome / Microsoft Edge / Firefox**.
+
+### Opsi 2: Jalankan Menggunakan Local Server (Python)
+Buka terminal / PowerShell di folder ini, lalu jalankan:
+```bash
+python -m http.server 8000
+```
+Lalu buka browser di alamat:
+```
+http://localhost:8000
+```
+
+---
+
+## 🌐 Cara Mengonlinekan (Hosting Gratis)
+
+Website ini adalah website statis murni (*HTML, CSS, JS*), sehingga bisa dihosting 100% gratis kapan saja di:
+- **GitHub Pages**: Buat repository baru di GitHub, upload semua file (`index.html`, `style.css`, `app.js`), lalu aktifkan GitHub Pages di tab *Settings > Pages*.
+- **Vercel / Netlify**: Tinggal *drag and drop* folder ini ke dashboard [Netlify Drop](https://app.netlify.com/drop) atau [Vercel](https://vercel.com).
+
+
+---
+
+## Catatan Revisi UI/UX (Arthur, 11 Nov 2026)
+
+File di folder ini adalah HASIL REVISI; file asli Hazukii tidak diubah.
+
+Yang sudah direvisi:
+1. Identitas default diganti: brand Astharia Lab, desainer Hazukii, bio resmi, slogan di bawah nama brand. Foto profil stok diganti logo Astharia Lab (assets/logo-astharia.svg) dan poster hero diganti karya asli SURVIVE (assets/poster-survive-patrick.png). Statistik "99% Kepuasan Klien" diganti "3 Pilihan Paket Jasa".
+2. Pengaturan lama di browser tidak lagi menimpa identitas baru (kunci penyimpanan pengaturan diganti; karya yang sudah ter-upload tetap dipertahankan).
+3. Warna aksi disamakan: biru = aksi navigasi/paket, hijau = aksi WhatsApp (tombol paket, form, konsultasi, tombol melayang). Ada tombol "Order Desain" melayang di HP. Modal detail bisa ditutup dengan Esc; tombol menu & tutup modal diberi label aksesibilitas; anchor section diberi jarak scroll agar tidak tertutup header.
+4. Galeri tidak lagi memotong karya: gambar tampil utuh (contain) di kartu. Glow/animasi latar dikurangi intensitasnya (warna & font tetap seperti buatan Hazukii).
+5. Link admin dihapus dari footer publik & menu HP (halaman admin tetap dibuka lewat admin.html), dan petunjuk PIN di halaman login admin dicabut.
+
+Masih harus dilengkapi Hazukii sebelum online:
+- Nomor WhatsApp asli: ganti nomor contoh 6281234567890 lewat Pengaturan di halaman admin (atau DEFAULT_SETTINGS di app.js/admin.js). Selama belum diganti, tombol WhatsApp masih menuju nomor contoh itu.
+- PIN admin: masih 1234 — ganti nilai DEFAULT_PIN di admin.js sebelum dionlinekan.
+- Isi galeri bawaan masih contoh (keputusan konten galeri belum dibahas), dan paket/harga belum direvisi (nomor 3 ditunda Hazukii).
