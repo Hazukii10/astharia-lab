@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Logo Astharia Lab — sparkle A">
   <!-- Sparkle 4 sisi, simetris penuh di titik tengah 120,120 -->
   <path d="M120 4.8 C129.6 81.6 158.4 110.4 235.2 120 C158.4 129.6 129.6 158.4 120 235.2 C110.4 158.4 81.6 129.6 4.8 120 C81.6 110.4 110.4 81.6 120 4.8 Z" fill="#E2E8F0"/>
-  <!-- Huruf A tebal bergaya grotesque (path geometris): kotak luar x 76-164, y 68-152, titik tengah 120,110 — sengaja lebih ke atas dari tengah sparkle -->
-  <path fill-rule="evenodd" fill="#0A0D16" d="M112 68 L128 68 L164 152 L143 152 L134.5 128 L105.5 128 L97 152 L76 152 Z M120 94 L130 120 L110 120 Z"/>
+  <!-- Huruf A dua potong bergaya blade mengikuti referensi Hazukii: potongan besar melengkung di kanan + potongan daun kecil di kiri, posisi tengah-atas sparkle -->
+  <path fill="#0A0D16" d="M123.3 71 L113.1 93.4 C118 113 128 126 153.1 131.2 Z M117.9 97.6 L87.1 131.2 L108.9 131.2 C116 126 120 112 117.9 97.6 Z"/>
 </svg>
