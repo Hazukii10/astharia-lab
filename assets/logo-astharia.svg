@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Logo Astharia Lab — sparkle A">
-  <path d="M50 2 C54 34 66 46 98 50 C66 54 54 66 50 98 C46 66 34 54 2 50 C34 46 46 34 50 2 Z" fill="#E2E8F0"/>
-  <text x="50" y="65" text-anchor="middle" font-size="36" font-weight="900" fill="#0A0D16" font-family="Arial, Helvetica, sans-serif">A</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Logo Astharia Lab — sparkle A">
+  <!-- Sparkle 4 sisi, simetris penuh di titik tengah 120,120 -->
+  <path d="M120 4.8 C129.6 81.6 158.4 110.4 235.2 120 C158.4 129.6 129.6 158.4 120 235.2 C110.4 158.4 81.6 129.6 4.8 120 C81.6 110.4 110.4 81.6 120 4.8 Z" fill="#E2E8F0"/>
+  <!-- Huruf A digambar sebagai path geometris (bukan font teks): kotak luar x 82-158, y 78-162, sehingga titik tengahnya persis 120,120 -->
+  <path fill-rule="evenodd" fill="#0A0D16" d="M120 78 L158 162 L139 162 L131.5 141 L108.5 141 L101 162 L82 162 Z M120 105 L128.5 128 L111.5 128 Z"/>
 </svg>
