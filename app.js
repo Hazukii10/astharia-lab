@@ -77,7 +77,7 @@ const INITIAL_ARTWORKS = [
 const DEFAULT_SETTINGS = {
   brandName: "Astharia Lab",
   designerName: "Hazukii",
-  phone: "6281234567890", // TODO: ganti dengan nomor WhatsApp asli Astharia Lab sebelum website dionlinekan
+  phone: "6285748215098", // nomor WhatsApp asli Astharia Lab (0857-4821-5098)
   bio: "Hazukii adalah desainer grafis asal Kediri yang fokus membuat poster dan desain visual untuk media sosial. Karyanya menonjolkan tipografi yang berani dan tampilan yang estetik — saat ini membuka jasa desain poster acara, konten Instagram, dan promosi."
 };
 
@@ -240,6 +240,7 @@ window.openDetailModal = function(id) {
 
 function closeDetailModal() {
   const modal = document.getElementById("detailModal");
+  if (!modal) return; // halaman order tidak punya modal detail
   modal.classList.add("hidden");
   modal.classList.remove("flex");
   document.body.style.overflow = "";
@@ -255,7 +256,8 @@ window.orderService = function(packageName, price) {
 
 // Event Listeners
 function setupEventListeners() {
-  document.getElementById("btnCloseDetailModal").addEventListener("click", closeDetailModal);
+  const btnCloseModal = document.getElementById("btnCloseDetailModal");
+  if (btnCloseModal) btnCloseModal.addEventListener("click", closeDetailModal);
 
   // Tutup modal detail dengan tombol Escape
   document.addEventListener("keydown", (e) => {

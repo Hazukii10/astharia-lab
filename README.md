@@ -80,3 +80,8 @@ Masih harus dilengkapi Hazukii sebelum online:
 - Nomor WhatsApp asli: ganti nomor contoh 6281234567890 lewat Pengaturan di halaman admin (atau DEFAULT_SETTINGS di app.js/admin.js). Selama belum diganti, tombol WhatsApp masih menuju nomor contoh itu.
 - PIN admin: masih 1234 — ganti nilai DEFAULT_PIN di admin.js sebelum dionlinekan.
 - Isi galeri bawaan masih contoh (keputusan konten galeri belum dibahas), dan paket/harga belum direvisi (nomor 3 ditunda Hazukii).
+
+## Update 2026-11-11 (sore): WhatsApp asli + halaman order terpisah
+- Nomor WhatsApp diganti ke nomor asli Astharia Lab: 0857-4821-5098 (format link 6285748215098) di app.js, admin.js, dan admin.html. Catatan: browser yang pernah menyimpan pengaturan lama mungkin perlu memperbarui nomor sekali di Admin > Pengaturan.
+- Pemesanan dipindah ke halaman terpisah: order.html berisi paket jasa, alur kerja, dan formulir pemesanan. Halaman utama (index.html) sekarang hanya berisi beranda/hero, showcase galeri, dan profil/tentang; semua tombol order mengarah ke order.html. app.js dibuat aman untuk kedua halaman (penjaga elemen modal).
+- Perubahan ini juga sudah di-upload ke repository GitHub Hazukii10/astharia-lab (GitHub Pages).

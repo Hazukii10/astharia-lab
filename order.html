@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Desain | Astharia Lab — Paket Jasa Poster & Form Pemesanan</title>
+  <meta name="description" content="Portfolio desain grafis, poster event, branding, dan layanan jasa pembuatan poster profesional dengan estetika modern kekinian.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            dark: {
+              950: '#06080E',
+              900: '#0A0D16',
+              800: '#111726',
+              700: '#1A2338',
+              600: '#263350',
+            },
+            brand: {
+              cyan: '#0EA5E9',
+              blue: '#2563EB',
+              amber: '#F59E0B',
+              orange: '#F97316',
+              emerald: '#10B981',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark-950 text-slate-100 font-sans antialiased selection:bg-brand-cyan selection:text-dark-950 relative min-h-screen overflow-x-hidden">
+
+  <!-- Background Ambient Glows (Electric Cyan & Amber/Blue - No Purple) -->
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-[450px] h-[450px] bg-sky-500/8 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-blue-600/8 rounded-full blur-[160px]"></div>
+    <div class="absolute bottom-20 left-1/4 w-[450px] h-[450px] bg-amber-500/5 rounded-full blur-[160px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-10"></div>
+  </div>
+
+  <!-- Announcement / Commission Bar -->
+  <div class="bg-gradient-to-r from-sky-950/80 via-blue-950/80 to-dark-900 border-b border-sky-500/20 px-4 py-2 text-xs sm:text-sm text-center font-medium backdrop-blur-md flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-semibold border border-emerald-500/30 text-xs">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open Commission
+    </span>
+    <span class="text-slate-300">Jasa Desain Poster Acara, Brand Identity & Social Media Visual!</span>
+  </div>
+
+  <!-- Header / Navigation Bar (Customer View) -->
+  <header class="sticky top-0 z-40 bg-dark-950/85 backdrop-blur-xl border-b border-white/5 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-500 via-blue-600 to-amber-500 p-[1.5px] shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-dark-950 rounded-[14px] flex items-center justify-center">
+            <i class="ph-bold ph-palette text-2xl text-transparent bg-clip-text bg-gradient-to-tr from-sky-400 to-amber-400"></i>
+          </div>
+        </div>
+        <div>
+          <span id="navBrandName" class="font-display font-black text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-sky-300">
+            Astharia<span class="text-brand-cyan"> Lab</span>
+          </span>
+          <span class="block text-[11px] tracking-wide text-slate-400 font-medium">desain estetik, dengan gaya kekinian</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="index.html#karya" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
+          <i class="ph ph-images"></i> Galeri Poster
+        </a>
+        <a href="#layanan" class="text-sky-400 transition-colors flex items-center gap-1.5">
+          <i class="ph ph-sparkle"></i> Jasa & Harga
+        </a>
+        <a href="#workflow" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
+          <i class="ph ph-git-branch"></i> Alur Kerja
+        </a>
+        <a href="index.html#tentang" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
+          <i class="ph ph-user"></i> Tentang
+        </a>
+      </nav>
+
+      <!-- Customer Action Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Direct Order via WhatsApp Button -->
+        <a id="btnNavWhatsApp" href="#kontak" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-sky-600 text-white font-bold text-xs sm:text-sm shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:brightness-110 active:scale-95 transition-all">
+          <i class="ph-bold ph-whatsapp-logo text-base"></i>
+          <span>Konsultasi / Order</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="btnMobileMenu" aria-label="Buka atau tutup menu" aria-expanded="false" class="md:hidden p-2.5 rounded-xl bg-dark-800 border border-white/10 text-slate-300 hover:text-white">
+          <i class="ph-bold ph-list text-xl"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-dark-900/95 backdrop-blur-xl px-4 py-5 space-y-3">
+      <a href="index.html#karya" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Galeri Poster</a>
+      <a href="#layanan" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Jasa & Harga</a>
+      <a href="#workflow" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Alur Kerja</a>
+      <a href="index.html#tentang" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Tentang</a>
+    </div>
+  </header>
+
+  <!-- Page Intro: Order -->
+  <section class="relative pt-12 pb-4 md:pt-16 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-bold tracking-widest uppercase text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-md border border-emerald-500/20">
+        Halaman Pemesanan
+      </span>
+      <h1 class="font-display font-black text-3xl sm:text-5xl text-white mt-4">
+        Order Desain di <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-amber-300">Astharia Lab</span>
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
+        Pilih paket jasanya, ikuti alur kerjanya, lalu isi formulir pemesanan — pesananmu langsung terkirim ke WhatsApp Astharia Lab.
+      </p>
+      <a href="index.html" class="inline-flex items-center gap-1.5 mt-5 text-xs sm:text-sm text-sky-400 hover:text-amber-400 font-semibold transition-colors">
+        <i class="ph-bold ph-arrow-left"></i> Kembali ke Beranda & Galeri
+      </a>
+    </div>
+  </section>
+
+  <!-- Jasa Desain & Paket Harga Section -->
+  <section id="layanan" class="scroll-mt-24 py-24 relative overflow-hidden">
+    <!-- Ambient glow behind pricing -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-sky-600/10 rounded-full blur-[180px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold tracking-widest uppercase text-amber-400 bg-amber-500/10 px-3 py-1 rounded-md border border-amber-500/20">
+          Jasa Desain Profesional
+        </span>
+        <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-3">
+          Paket Jasa Pembuatan Poster
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-3">
+          Pilih paket yang paling pas untuk kebutuhan acaramu, promosi bisnis, atau kampanye sosial media. Semua hasil siap cetak dan siap tayang!
+        </p>
+      </div>
+
+      <!-- Pricing Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Package 1: Basic Poster -->
+        <div class="bg-dark-800/70 border border-white/10 rounded-3xl p-7 flex flex-col justify-between hover:border-sky-500/50 hover:shadow-2xl hover:shadow-sky-500/10 transition-all group">
+          <div>
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400 px-3 py-1 rounded-full bg-white/5 border border-white/10">Starter</span>
+              <i class="ph ph-sparkle text-sky-400 text-xl"></i>
+            </div>
+            <h3 class="font-display font-bold text-2xl text-white">Poster Acara / Event</h3>
+            <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">Pilihan tepat untuk poster konser musik, seminar/webinar, pentas seni, bazar, dan event komunitas.</p>
+            
+            <div class="mt-6 mb-6 pb-6 border-b border-white/10">
+              <span class="text-slate-400 text-xs font-medium">Mulai dari</span>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span class="font-display font-black text-3xl text-white">Rp 75.000</span>
+                <span class="text-xs text-slate-400">/ karya</span>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>1 Konsep Desain Modern & Trendy</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>Revisi 2x Gratis</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>Format Cetak Tajam (PDF HD A4/A3)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>Format Sosmed (Story & Feed JPG/PNG)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-clock text-slate-400 text-base"></i>
+                <span class="text-slate-400">Pengerjaan 1-2 Hari Kerja</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/5">
+            <button onclick="orderService('Poster Acara / Event', 'Rp 75.000')" class="w-full py-3 rounded-xl bg-emerald-600/80 hover:bg-emerald-500 text-white font-semibold text-sm transition-all flex items-center justify-center gap-2 group-hover:bg-emerald-500">
+              <i class="ph-bold ph-whatsapp-logo text-lg text-emerald-400 group-hover:text-white"></i>
+              Pesan Paket Ini
+            </button>
+          </div>
+        </div>
+
+        <!-- Package 2: Most Popular (Highlight) -->
+        <div class="relative bg-gradient-to-b from-dark-800 to-dark-900 border-2 border-sky-500 rounded-3xl p-7 flex flex-col justify-between shadow-2xl shadow-sky-500/20 scale-[1.02] transition-all">
+          
+          <!-- Popular badge -->
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs px-4 py-1 rounded-full uppercase tracking-wider shadow-lg flex items-center gap-1">
+            <i class="ph-fill ph-fire text-amber-300"></i> Paling Diminati
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-4 mt-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-300 px-3 py-1 rounded-full bg-sky-500/20 border border-sky-500/30">Pro Creative</span>
+              <i class="ph-fill ph-trophy text-amber-400 text-2xl"></i>
+            </div>
+            <h3 class="font-display font-bold text-2xl text-white">Full Visual Campaign</h3>
+            <p class="text-slate-300 text-xs sm:text-sm mt-2 leading-relaxed">Solusi visual lengkap untuk festival, peluncuran produk, promosi brand besar & social media kit.</p>
+            
+            <div class="mt-6 mb-6 pb-6 border-b border-white/10">
+              <span class="text-slate-400 text-xs font-medium">Mulai dari</span>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span class="font-display font-black text-3xl text-white">Rp 175.000</span>
+                <span class="text-xs text-slate-400">/ paket</span>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-200">
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>2 Alternatif Konsep Awal</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>Poster Cetak + Story + Banner Landscape</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>Revisi 4x Sepuasnya</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>File Mentah Master (PSD / AI / Figma)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>Mockup 3D Realistis untuk Promosi</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-clock text-sky-400 text-base"></i>
+                <span class="text-sky-300 font-medium">Prioritas Pengerjaan Kilat</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/10">
+            <button onclick="orderService('Full Visual Campaign', 'Rp 175.000')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:brightness-110 text-white font-bold text-sm shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2">
+              <i class="ph-bold ph-whatsapp-logo text-lg"></i>
+              Pesan Paket Populer
+            </button>
+          </div>
+        </div>
+
+        <!-- Package 3: Branding & Custom -->
+        <div class="bg-dark-800/70 border border-white/10 rounded-3xl p-7 flex flex-col justify-between hover:border-sky-500/50 hover:shadow-2xl hover:shadow-sky-500/10 transition-all group">
+          <div>
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400 px-3 py-1 rounded-full bg-white/5 border border-white/10">Enterprise</span>
+              <i class="ph ph-crown text-amber-400 text-xl"></i>
+            </div>
+            <h3 class="font-display font-bold text-2xl text-white">Branding & Logo Kit</h3>
+            <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">Pembangunan identitas visual menyeluruh: logo, color palette, typography & poster guidelines.</p>
+            
+            <div class="mt-6 mb-6 pb-6 border-b border-white/10">
+              <span class="text-slate-400 text-xs font-medium">Mulai dari</span>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span class="font-display font-black text-3xl text-white">Rp 350.000</span>
+                <span class="text-xs text-slate-400">/ brand</span>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>3 Konsep Logo Eksklusif</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>Brand Style Guide Mini (Font, Warna, Do/Don't)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>Template Poster Promosi Siap Edit</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-check text-emerald-400 text-base"></i>
+                <span>Hak Cipta Penuh & File Vector (SVG, EPS, AI)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="ph-bold ph-clock text-slate-400 text-base"></i>
+                <span class="text-slate-400">Pengerjaan 3-5 Hari</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/5">
+            <button onclick="orderService('Branding & Logo Kit', 'Rp 350.000')" class="w-full py-3 rounded-xl bg-emerald-600/80 hover:bg-emerald-500 text-white font-semibold text-sm transition-all flex items-center justify-center gap-2 group-hover:bg-emerald-500">
+              <i class="ph-bold ph-whatsapp-logo text-lg text-emerald-400 group-hover:text-white"></i>
+              Konsultasi Brand
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Custom Request Banner -->
+      <div class="mt-12 bg-gradient-to-r from-sky-950/60 via-blue-950/40 to-slate-900 border border-sky-500/30 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center md:text-left">
+          <h4 class="font-display font-bold text-xl text-white">Punya ide konsep custom atau butuh desain cepat?</h4>
+          <p class="text-slate-300 text-xs sm:text-sm">Diskusikan kebutuhan visualmu langsung via WhatsApp. Fast response & konsultasi gratis!</p>
+        </div>
+        <a id="btnCustomConsultation" href="#kontak" target="_blank" class="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-lg shadow-emerald-500/20 transition-all flex items-center gap-2 whitespace-nowrap">
+          <i class="ph-bold ph-whatsapp-logo text-xl"></i>
+          Chat WhatsApp Langsung
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Workflow / Cara Memesan Section -->
+  <section id="workflow" class="scroll-mt-24 py-20 bg-dark-900/80 border-t border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-bold tracking-widest uppercase text-sky-400 bg-sky-500/10 px-3 py-1 rounded-md border border-sky-500/20">
+          Proses Mudah & Cepat
+        </span>
+        <h2 class="font-display font-black text-3xl sm:text-4xl text-white mt-3">
+          4 Langkah Mudah Memesan Jasa
+        </h2>
+        <p class="text-slate-400 text-sm mt-2">Tanpa ribet, hasil desain dikirim tepat waktu sesuai harapanmu.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        
+        <!-- Step 1 -->
+        <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6 relative group hover:border-sky-500/40 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center font-display font-black text-xl mb-4 group-hover:scale-110 transition-transform">
+            01
+          </div>
+          <h4 class="font-display font-bold text-lg text-white mb-2">Brief & Diskusi</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">Kirimkan tema acara, teks materi poster, referensi visual, dan deadline melalui WhatsApp.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6 relative group hover:border-blue-500/40 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 text-blue-400 flex items-center justify-center font-display font-black text-xl mb-4 group-hover:scale-110 transition-transform">
+            02
+          </div>
+          <h4 class="font-display font-bold text-lg text-white mb-2">Proses Desain</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">Pengerjaan konsep visual berestetika modern kekinian sesuai arahan materi yang diberikan.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6 relative group hover:border-amber-500/40 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center font-display font-black text-xl mb-4 group-hover:scale-110 transition-transform">
+            03
+          </div>
+          <h4 class="font-display font-bold text-lg text-white mb-2">Review & Revisi</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">Hasil draf awal diberikan. Kamu bisa mengajukan revisi penyesuaian detail hingga puas.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6 relative group hover:border-emerald-500/40 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-display font-black text-xl mb-4 group-hover:scale-110 transition-transform">
+            04
+          </div>
+          <h4 class="font-display font-bold text-lg text-white mb-2">Pengiriman File</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">File final beresolusi super tajam (PDF siap cetak, JPG/PNG, dan file master) dikirim via Drive.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Form Pemesanan Langsung ke WhatsApp -->
+  <section id="kontak" class="scroll-mt-24 py-20 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-gradient-to-b from-dark-800 to-dark-900 border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        
+        <div class="text-center max-w-xl mx-auto mb-8">
+          <h3 class="font-display font-black text-2xl sm:text-3xl text-white">Formulir Pemesanan Desain</h3>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2">Isi formulir singkat di bawah ini, lalu klik kirim untuk langsung terhubung ke WhatsApp saya dengan draf pesan siap kirim.</p>
+        </div>
+
+        <form id="orderForm" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Nama Kamu / Brand *</label>
+              <input type="text" id="orderClientName" required placeholder="Contoh: Budi / Festival Musik Senja" class="w-full px-4 py-3 rounded-xl bg-dark-950/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500 transition">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Pilihan Paket Jasa</label>
+              <select id="orderPackageType" class="w-full px-4 py-3 rounded-xl bg-dark-950/80 border border-white/10 text-white text-sm focus:outline-none focus:border-sky-500 transition">
+                <option value="Poster Acara / Event">Poster Acara / Event (Rp 75.000)</option>
+                <option value="Full Visual Campaign">Full Visual Campaign (Rp 175.000)</option>
+                <option value="Branding & Logo Kit">Branding & Logo Kit (Rp 350.000)</option>
+                <option value="Custom / Tanya Harga Dulu">Custom / Tanya Harga Dulu</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Target Deadline</label>
+              <input type="date" id="orderDeadline" class="w-full px-4 py-3 rounded-xl bg-dark-950/80 border border-white/10 text-white text-sm focus:outline-none focus:border-sky-500 transition">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Ukuran / Output yang Diinginkan</label>
+              <input type="text" id="orderDimensions" placeholder="Contoh: A3 Cetak & IG Story 9:16" class="w-full px-4 py-3 rounded-xl bg-dark-950/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500 transition">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Ringkasan Brief / Keterangan Desain *</label>
+            <textarea id="orderBrief" rows="3" required placeholder="Jelaskan nama acara, konsep tema (misal: retro 90s, neon minimalist, cyber modern), teks wajib yang dicantumkan, dll..." class="w-full px-4 py-3 rounded-xl bg-dark-950/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500 transition"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:brightness-110 text-white font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all flex items-center justify-center gap-2">
+            <i class="ph-bold ph-whatsapp-logo text-xl"></i>
+            Kirim Pemesanan via WhatsApp
+          </button>
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer with Discreet Admin Link -->
+  <footer class="border-t border-white/10 bg-dark-950 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+        <span id="footerBrand">Astharia Lab • Hak Cipta Dilindungi</span>
+      </div>
+      <div class="flex items-center gap-6 text-slate-400">
+        <a href="index.html#karya" class="hover:text-white transition">Galeri Poster</a>
+        <a href="#layanan" class="hover:text-white transition">Jasa & Paket</a>
+        <a href="#kontak" class="hover:text-white transition">Pesan</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tombol ke form order (khusus HP) -->
+  <a href="#kontak" aria-label="Ke formulir pemesanan" class="fixed bottom-4 right-4 z-40 md:hidden inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-sm shadow-2xl shadow-emerald-500/30 active:scale-95 transition">
+    <i class="ph-bold ph-pencil-simple-line text-lg"></i> Isi Form Order
+  </a>
+
+  <script src="app.js"></script>
+</body>
+</html>
